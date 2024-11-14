@@ -7,7 +7,7 @@ require 'pry'
 class Scraper
   
   def scrape_players
-    moose = open('https://moose.gg/servers')
+    moose = URI.open('https://moose.gg/servers').read
     doc = Nokogiri::HTML(moose)
     players = doc.css('.ipsType_sectionTitle')
     binding.pry
