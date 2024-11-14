@@ -9,8 +9,11 @@ class Scraper
   def scrape_players
     moose = URI.open('https://moose.gg/servers').read
     doc = Nokogiri::HTML(moose)
-    players = doc.css('.ipsType_sectionTitle')
-    binding.pry
+    servers = doc.css('#contentArea_ssm')
+
+    servers.each do |server|
+      puts server.text.strip
+    end
   end
 end
 
