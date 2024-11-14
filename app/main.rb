@@ -7,8 +7,7 @@ require 'pry'
 class Scraper
   
   def scrape_players
-    moose = URI.open('https://moose.gg/servers').read
-    doc = Nokogiri::HTML(moose)
+    doc = Nokogiri::HTML(URI.open('https://moose.gg/servers').read)
     servers = doc.css('#contentArea_ssm')
 
     servers.each do |server|
