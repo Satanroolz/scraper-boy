@@ -8,11 +8,9 @@ class Scraper
   
   def scrape_players
     doc = Nokogiri::HTML(URI.open('https://moose.gg/servers').read)
-    servers = doc.css('#contentArea_ssm')
+    players = doc.css('p')[17]
 
-    servers.each do |server|
-      puts server.text.strip
-    end
+    puts "There are currently #{ players.text } players online"
   end
 end
 
